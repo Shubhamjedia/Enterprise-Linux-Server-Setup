@@ -90,3 +90,6 @@
 ### Requirement 8: Pre-Upgrade Point-in-Time Snapshot
 * **Requirement:** Create an LVM snapshot for the Development volume before a major software upgrade so it can be restored if the upgrade fails.
 * **Execution Proof:**
+  <img width="1666" height="163" alt="Screenshot 2026-08-11 205011" src="https://github.com/user-attachments/assets/561e6dd2-18a3-4f50-b9e2-5b05b31cbfff" />
+<img width="1245" height="411" alt="Screenshot 2026-08-11 205051" src="https://github.com/user-attachments/assets/692b6203-8a9b-4dcb-b492-8dc1aa7b9cf9" />
+
