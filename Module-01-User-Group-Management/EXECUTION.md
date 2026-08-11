@@ -1,7 +1,5 @@
 # Module 01: Requirements & Execution Proofs
 
-Is document mein Module 01 ki har requirement aur uske specific execution proof (screenshot) ka direct mapping hai.
-
 ---
 
 ### Requirement 1: User & Group Creation
