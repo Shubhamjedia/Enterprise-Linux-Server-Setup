@@ -12,7 +12,8 @@
 ### Requirement 2: Centralized Storage Pool Creation
 * **Requirement:** Create a centralized Volume Group named `company_vg` with 5 GB storage capacity that can be expanded in the future.
 * **Execution Proof:**
-<img width="1735" height="626" alt="pv create" src="https://github.com/user-attachments/assets/88620bef-e1f9-4dd6-86b5-301dad3f357a" />
+ <img width="1734" height="522" alt="vg creation" src="https://github.com/user-attachments/assets/da8992a9-6d42-43c0-b9b3-59d8e87e3c41" />
+
 
 
 
@@ -56,8 +57,9 @@
 ### Requirement 6: Controlled Storage Reduction (Backup)
 * **Requirement:** Safely reduce the Backup storage (`backup`) from 1.0 GB to 500 MB without losing any files or data.
 * **Execution Proof:**
-  <img width="1701" height="475" alt="lv reduce" src="https://github.com/user-attachments/assets/95038dd0-b97f-4e0b-8984-bcef165ec1c1" />
+ 
 <img width="1732" height="297" alt="umount" src="https://github.com/user-attachments/assets/c8ea84a6-792a-47e8-93fb-627ec94533f1" />
+<img width="1701" height="475" alt="lv reduce" src="https://github.com/user-attachments/assets/95038dd0-b97f-4e0b-8984-bcef165ec1c1" />
 
 
 
