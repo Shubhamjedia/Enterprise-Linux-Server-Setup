@@ -76,6 +76,12 @@
 ### Requirement 7: Live Storage Infrastructure Scaling
 * **Requirement:** Add a new 1 GB disk to extend `company_vg` without stopping any running services or affecting existing data.
 * **Execution Proof:**
+<img width="1673" height="241" alt="Screenshot 2026-08-11 201427" src="https://github.com/user-attachments/assets/4a603909-f10c-4991-88a1-4683b1f8da90" />
+<img width="1127" height="186" alt="Screenshot 2026-08-11 201857" src="https://github.com/user-attachments/assets/e681f67b-0626-47f3-9527-e90ab0cf1ce5" />
+<img width="1616" height="315" alt="Screenshot 2026-08-11 202443" src="https://github.com/user-attachments/assets/ae9e12fe-d8ff-46fd-8907-40fbc1589290" />
+
+
+
 
 
 
