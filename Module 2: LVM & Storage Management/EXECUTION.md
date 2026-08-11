@@ -51,6 +51,11 @@
 ### Requirement 5: Online Storage Expansion (Development)
 * **Requirement:** Increase the Development storage (`developer`) from 1.5 GB to 2.0 GB (+500 MB) live without losing any data or unmounting.
 * **Execution Proof:**
+<img width="1303" height="353" alt="file resize" src="https://github.com/user-attachments/assets/b4884ea7-7a43-4cbd-8766-4e5068866424" />
+
+<img width="1695" height="407" alt="Screenshot 2026-08-11 195442" src="https://github.com/user-attachments/assets/970753ae-390d-4d0f-b9cc-5640db16a9fb" />
+
+<img width="1634" height="473" alt="Screenshot 2026-08-11 195520" src="https://github.com/user-attachments/assets/c95098dd-0a1b-463f-b1d2-1c4addfdc12c" />
 
 
 
