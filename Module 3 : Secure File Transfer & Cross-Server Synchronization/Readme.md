@@ -1,4 +1,4 @@
-# Module 04: Secure File Transfer & Cross-Server Sync
+# Module 3 : Secure File Transfer & Cross-Server Sync
 
 ## Overview
 This project sets up secure file transfer and backup synchronization between two Linux servers: **server1** and **server 2**. The goal is to safely transfer and back up department data from the main server to the backup server using SSH-based tools.
