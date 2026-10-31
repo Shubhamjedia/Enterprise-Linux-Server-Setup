@@ -87,46 +87,8 @@
  <img width="1876" height="172" alt="Screenshot 2026-08-08 181903" src="https://github.com/user-attachments/assets/bd608077-48ec-4969-b10d-d51e6d808bca" />
 
 
- ### Complete Audit Script Logic
-
-```bash
-# 1. System Metadata Logic
-$(date | awk {'print $1"-"$2"-"$3"-"$4'})$(whoami)
-
-# 2. Total User Logic
-$(grep -c -i bash$ /etc/passwd)
-
-# 3. Department Wise User Logic
-$(grep -c -i developer /etc/passwd)
-$(grep -c -i humanresource /etc/passwd)$(grep -c -i qa /etc/passwd)
-$(grep -c -i finance /etc/passwd)$(grep -c -i itadmin /etc/passwd)
-
-# 4. Sudo User Logic
-$(grep -i sudouser /etc/passwd | awk -F: {'print $1'})
-
-# 5. Locked User Logic
-$(grep -i /sbin/nologin$ /etc/passwd | egrep "developer|humanresource|qa|finance|infra" | awk -F: {'print $1'})
-
-# 6. Password Summary Logic
-for i in dev1 dev2 dev3 devlead hr1 hr2 hrmanager fin1 fin2 finlead itadmin1 itadmin2 qa1 qa2 qa3 qalead
-do
-    chage -l $i | egrep -i "last|password expires|warning"
-done
-
-# 7. Home Directory Summary Logic
-for i in dev1 dev2 dev3 devlead hr1 hr2 hrmanager fin1 fin2 finlead itadmin1 itadmin2 qa1 qa2 qa3 qalead
-do
-    grep -i /home/$i /etc/passwd | awk -F: {'print $6'}
-done
-
-# 8. User Shell Info Logic
-for i in dev1 dev2 dev3 devlead hr1 hr2 hrmanager fin1 fin2 finlead itadmin1 itadmin2 qa1 qa2 qa3 qalead
-do
-    grep -i ^$i /etc/passwd | awk -F: {'print $7'}
-done
-
-Script Output
-
+ ### Complete Audit Script 
+ 
  ```text
 ===========================================================
          MONTHLY USER AUDIT REPORT
