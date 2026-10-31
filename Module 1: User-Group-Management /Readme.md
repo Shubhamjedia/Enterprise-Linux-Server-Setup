@@ -1,70 +1,38 @@
-# Module 01: Enterprise System & User Environment Setup
 
-## Objective
-Design and configure a production-ready Linux environment with 16 employee accounts across 5 departments, implementing role-based access control (RBAC), strict directory permissions, password security policies, and automated user auditing.
 
----
+# Enterprise Linux RBAC & User Management Setup
 
-## User & Group Architecture
-
-Total 16 users created across 5 functional departments:
-
-* **Infrastructure Group (`infra`):** `itadmin01`, `itadmin02`
-* **Development Department (`devdept`):** `dev01`, `dev02`, `dev03`, `dev04` | Lead: `devlead`
-* **QA Department (`qadept`):** `qa01`, `qa02`, `qa03` | Lead: `qalead`
-* **HR Department (`hrdept`):** `hr01`, `hr02` | Manager: `hrmanager`
-* **Finance Department (`findept`):** `fin01`, `fin02` | Lead: `financelead`
+A production-grade Linux infrastructure setup managing 16 user accounts across 5 departments with strict Role-Based Access Control (RBAC), ACLs, custom security policies, and automated auditing.
 
 ---
 
-## Directory Hierarchy & Permissions
+## ⚡ Overview & Features
 
-Base directory path: `/company`
-
-* **`/company/development`**
-  * Permissions: `2770` (`root:devdept`)
-  * Features: **SGID enabled** for automatic group ownership inheritance on new files. ACL applied for `financelead` user read-only access (`r-x`).
-* **`/company/qa`**
-  * Permissions: `0770` (`root:qadept`)
-  * Features: Restricted to QA team. ACL applied for `devlead` user access (`rwx`).
-* **`/company/hr`**
-  * Permissions: `0770` (`root:hrdept`)
-  * Features: Restricted strictly to HR team.
-* **`/company/finance`**
-  * Permissions: `0770` (`root:findept`)
-  * Features: Restricted to Finance team. ACL applied for `hrmanager` user access (`rwx`).
-* **`/company/shared`**
-  * Permissions: `1777` (`root:infra`)
-  * Features: **Sticky Bit enabled**. Open collaboration directory where users can create files, but only file owners or root can delete them.
-* **`/company/backups`**
-  * Permissions: `0700` (`root:infra`)
-  * Features: Highly restricted backup storage accessible strictly by Root and Infrastructure Team (`infra`).
+* **16 Users Across 5 Groups:** Infrastructure (`infra`), Development (`devdept`), QA (`qadept`), HR (`hrdept`), and Finance (`findept`).
+* **Granular Directory Security:** Custom POSIX permissions, **SGID** (group inheritance), **Sticky Bit** (safe shared storage), and extended **ACLs** for cross-department lead access.
+* **Privilege Isolation:** Full `sudo` access restricted to `%infra`; regular users have zero elevated privileges.
+* **PAM & Hardened Passwords:** 12+ character complexity, 5-password history retention, and forced 45-day password rotation (`chage`).
+* **Automated Auditing:** Scheduled monthly Cron job executing `/usr/local/bin/company_user_audit.sh`.
 
 ---
 
-## Security & Administrative Policies
+## 📂 Directory Access Map
 
-* **Sudo Administrative Privileges:**
-  * `%infra` group has full sudo privileges (`ALL=(ALL:ALL) ALL`).
-  * Regular department users have zero sudo capabilities.
-* **PAM & Password Aging Policies:**
-  * Min length 12 characters, complexity enforced via `pam_pwquality`.
-  * Password history set to 5 via `pam_pwhistory` (prevents reuse).
-  * Max password age set to 45 days (`chage -M 45`), Min age set to 5 days (`chage -m 5`), Warning before expiry set to 7 days (`chage -W 7`).
-* **User Lifecycle & Audit:**
-  * Immediate offboarding procedure for resigned users (locking account and changing shell to `/usr/sbin/nologin`).
-  * Cron job scheduled on 1st of every month running `/usr/local/bin/company_user_audit.sh` to generate the `company_user_audit.txt` report.
+| Directory | Permissions | Ownership | Special Access & Features |
+| :--- | :--- | :--- | :--- |
+| `/company/development` | `2770` | `root:devdept` | **SGID** enabled \| ACL: `financelead` (r-x) |
+| `/company/qa` | `0770` | `root:qadept` | Restricted \| ACL: `devlead` (rwx) |
+| `/company/hr` | `0770` | `root:hrdept` | HR Team strictly |
+| `/company/finance` | `0770` | `root:findept` | Restricted \| ACL: `hrmanager` (rwx) |
+| `/company/shared` | `1777` | `root:infra` | **Sticky Bit** (Global access, safe deletion) |
+| `/company/backups` | `0700` | `root:infra` | Infra & Root access only |
 
 ---
 
-## Key Linux Concepts Applied
-
-* User & Group Management & Lifecycle
-* Standard POSIX Permissions & Access Control Lists (ACLs)
-* Special Permissions (SGID, Sticky Bit)
-* Sudo RBAC Configuration (`/etc/sudoers.d/`)
-* PAM Modules & Password Aging (`chage`)
-* Cron Automation & Audit Reporting
+## 🛠️ Concepts & Tools Applied
+* **Access Control:** POSIX Permissions, `setfacl` / `getfacl`, SGID, Sticky Bit
+* **Identity & Security:** PAM (`pam_pwquality`, `pam_pwhistory`), `chage`, `/etc/sudoers.d/`
+* **Automation:** Cron, Bash Scripting, User Offboarding (`/usr/sbin/nologin`)
 
 ---
 
